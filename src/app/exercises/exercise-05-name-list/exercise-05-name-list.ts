@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './exercise-05-name-list.scss',
   templateUrl: './exercise-05-name-list.html',
 })
-export class Exercise05NameList {}
+export class Exercise05NameList {
+  nomes: string[] = ['Ana', 'Bruno', 'Carlos', 'Daniela', 'Eduardo'];
+}

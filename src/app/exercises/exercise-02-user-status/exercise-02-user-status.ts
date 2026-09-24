@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './exercise-02-user-status.scss',
   templateUrl: './exercise-02-user-status.html',
 })
-export class Exercise02UserStatus {}
+export class Exercise02UserStatus {
+  usuarioLogado: boolean = false;
+
+  alternarLogin(): void {
+    this.usuarioLogado = !this.usuarioLogado;
+  }
+}

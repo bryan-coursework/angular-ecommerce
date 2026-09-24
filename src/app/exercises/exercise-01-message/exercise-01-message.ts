@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './exercise-01-message.scss',
   templateUrl: './exercise-01-message.html',
 })
-export class Exercise01Message {}
+export class Exercise01Message {
+  mensagemVisivel: boolean = false;
+
+  alternarMensagem(): void {
+    this.mensagemVisivel = !this.mensagemVisivel;
+  }
+}

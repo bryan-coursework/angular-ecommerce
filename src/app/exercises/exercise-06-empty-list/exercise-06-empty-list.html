@@ -1,1 +1,22 @@
-<p>exercise-06-empty-list works!</p>
+<p>Total de nomes: {{ nomes.length }}</p>
+
+<ul>
+  <li
+    *ngFor="
+      let nome of nomes;
+      let indice = index;
+      let primeiro = first;
+      let ultimo = last
+    "
+  >
+    {{ indice + 1 }} - {{ nome }}
+    <span *ngIf="primeiro">Primeiro da lista</span>
+    <span *ngIf="ultimo">Último da lista</span>
+  </li>
+</ul>
+
+<p *ngIf="nomes.length === 0">Nenhum nome cadastrado</p>
+
+<button (click)="removerUltimoNome()">Remover último nome</button>
+<button (click)="limparLista()">Limpar lista</button>
+<button (click)="restaurarLista()">Restaurar lista inicial</button>

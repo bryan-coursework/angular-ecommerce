@@ -1,0 +1,23 @@
+.status-planejamento {
+  background-color: lightgray;
+}
+
+.status-desenvolvimento {
+  background-color: lightblue;
+}
+
+.status-testes {
+  background-color: lightyellow;
+}
+
+.status-concluido {
+  background-color: lightgreen;
+}
+
+.nota-aprovada {
+  outline: 3px solid green;
+}
+
+.nota-baixa {
+  color: red;
+}

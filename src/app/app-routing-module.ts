@@ -38,6 +38,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'exercises',
+    loadChildren: () =>
+      import('./exercises/exercises-module').then(
+        (module) => module.ExercisesModule
+      ),
+  },
+  {
     // Redireciona a rota inicial "/" para "/products".
     path: '',
     redirectTo: 'products',

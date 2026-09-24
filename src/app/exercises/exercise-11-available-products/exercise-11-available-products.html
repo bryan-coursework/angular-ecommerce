@@ -1,1 +1,13 @@
-<p>exercise-11-available-products works!</p>
+<button (click)="exibirTodos()">Exibir todos os produtos</button>
+<button (click)="exibirSomenteDisponiveis()">
+  Exibir somente produtos disponíveis
+</button>
+
+<ul>
+  <ng-container *ngFor="let produto of produtos">
+    <li *ngIf="!somenteDisponiveis || produto.quantidade > 0">
+      {{ produto.nome }} - {{ produto.preco | currency: 'BRL' }} - Quantidade:
+      {{ produto.quantidade }}
+    </li>
+  </ng-container>
+</ul>

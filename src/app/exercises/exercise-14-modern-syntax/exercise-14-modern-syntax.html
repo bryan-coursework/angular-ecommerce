@@ -1,1 +1,60 @@
-<p>exercise-14-modern-syntax works!</p>
+<h2>Exercício 2 — Situação do usuário</h2>
+
+@if (usuarioLogado) {
+  <p>Usuário autenticado</p>
+} @else {
+  <p>Acesso não autorizado</p>
+}
+
+<button (click)="alternarLogin()">
+  {{ usuarioLogado ? 'Sair' : 'Entrar' }}
+</button>
+
+<h2>Exercício 4 — Situação do estoque</h2>
+
+<p>Produto: {{ nomeProduto }}</p>
+<p>Quantidade em estoque: {{ quantidadeEstoque }}</p>
+
+@if (quantidadeEstoque > 0) {
+  <p>Produto disponível</p>
+} @else {
+  <p>Produto sem estoque</p>
+}
+
+<button (click)="adicionarItemEstoque()">Adicionar unidade</button>
+<button
+  (click)="removerItemEstoque()"
+  [disabled]="quantidadeEstoque === 0"
+>
+  Remover unidade
+</button>
+
+<h2>Exercício 8 — Lista de produtos</h2>
+
+<ul>
+  @for (produto of produtos; track produto.id; let indice = $index) {
+    <li>
+      <p>Posição: {{ indice + 1 }}</p>
+      <p>Nome: {{ produto.nome }}</p>
+      <p>Preço: {{ produto.preco | currency: 'BRL' }}</p>
+      <p>Quantidade: {{ produto.quantidade }}</p>
+      <p>
+        Valor total em estoque:
+        {{ produto.preco * produto.quantidade | currency: 'BRL' }}
+      </p>
+    </li>
+  } @empty {
+    <li>Nenhum produto cadastrado</li>
+  }
+</ul>
+
+<h2>Diferenças percebidas</h2>
+
+<p>
+  A sintaxe moderna usa blocos &#64;if e &#64;else e não precisa de um ng-template
+  para representar a condição alternativa.
+</p>
+<p>
+  O &#64;for exige uma expressão track e possui o bloco &#64;empty para tratar
+  listas vazias dentro da própria repetição.
+</p>

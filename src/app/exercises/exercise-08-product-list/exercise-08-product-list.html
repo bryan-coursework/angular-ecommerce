@@ -1,12 +1,14 @@
 <ul>
-  <li *ngFor="let produto of produtos; let indice = index">
-    <p>Posição: {{ indice + 1 }}</p>
-    <p>Nome: {{ produto.nome }}</p>
-    <p>Preço: {{ produto.preco | currency: 'BRL' }}</p>
-    <p>Quantidade: {{ produto.quantidade }}</p>
-    <p>
-      Valor total em estoque:
-      {{ produto.preco * produto.quantidade | currency: 'BRL' }}
-    </p>
-  </li>
+  @for (produto of produtos; track produto.id; let indice = $index) {
+    <li>
+      <p>Posição: {{ indice + 1 }}</p>
+      <p>Nome: {{ produto.nome }}</p>
+      <p>Preço: {{ produto.preco | currency: 'BRL' }}</p>
+      <p>Quantidade: {{ produto.quantidade }}</p>
+      <p>
+        Valor total em estoque:
+        {{ produto.preco * produto.quantidade | currency: 'BRL' }}
+      </p>
+    </li>
+  }
 </ul>

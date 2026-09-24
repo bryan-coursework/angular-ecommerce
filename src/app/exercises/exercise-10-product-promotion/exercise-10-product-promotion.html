@@ -1,20 +1,21 @@
 <ul>
-  <li
-    *ngFor="let produto of produtos"
-    [ngClass]="{ 'produto-em-promocao': produto.promocao }"
-  >
-    <p>Nome: {{ produto.nome }}</p>
-    <p
-      [ngStyle]="{
-        color: produto.promocao ? 'green' : 'black'
-      }"
-    >
-      Preço: {{ produto.preco | currency: 'BRL' }}
-    </p>
-    <p>Quantidade: {{ produto.quantidade }}</p>
-    <p *ngIf="produto.promocao">Produto em promoção</p>
-    <button (click)="alternarPromocao(produto)">
-      {{ produto.promocao ? 'Desativar promoção' : 'Ativar promoção' }}
-    </button>
-  </li>
+  @for (produto of produtos; track produto.id) {
+    <li [ngClass]="{ 'produto-em-promocao': produto.promocao }">
+      <p>Nome: {{ produto.nome }}</p>
+      <p
+        [ngStyle]="{
+          color: produto.promocao ? 'green' : 'black',
+        }"
+      >
+        Preço: {{ produto.preco | currency: 'BRL' }}
+      </p>
+      <p>Quantidade: {{ produto.quantidade }}</p>
+      @if (produto.promocao) {
+        <p>Produto em promoção</p>
+      }
+      <button (click)="alternarPromocao(produto)">
+        {{ produto.promocao ? 'Desativar promoção' : 'Ativar promoção' }}
+      </button>
+    </li>
+  }
 </ul>

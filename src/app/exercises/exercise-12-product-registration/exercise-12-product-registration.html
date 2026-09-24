@@ -2,20 +2,19 @@
 <input id="nome-produto" type="text" [(ngModel)]="novoNome" />
 
 <label for="quantidade-produto">Quantidade</label>
-<input
-  id="quantidade-produto"
-  type="number"
-  min="0"
-  [(ngModel)]="novaQuantidade"
-/>
+<input id="quantidade-produto" type="number" min="0" [(ngModel)]="novaQuantidade" />
 
 <button (click)="cadastrarProduto()">Cadastrar</button>
 
-<p *ngIf="mensagemErro">{{ mensagemErro }}</p>
+@if (mensagemErro) {
+  <p>{{ mensagemErro }}</p>
+}
 
 <ul>
-  <li *ngFor="let produto of produtos">
-    {{ produto.nome }} - Quantidade: {{ produto.quantidade }}
-    <button (click)="excluirProduto(produto.id)">Excluir</button>
-  </li>
+  @for (produto of produtos; track produto.id) {
+    <li>
+      {{ produto.nome }} - Quantidade: {{ produto.quantidade }}
+      <button (click)="excluirProduto(produto.id)">Excluir</button>
+    </li>
+  }
 </ul>

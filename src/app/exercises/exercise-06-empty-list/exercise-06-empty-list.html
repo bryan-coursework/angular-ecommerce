@@ -1,21 +1,26 @@
 <p>Total de nomes: {{ nomes.length }}</p>
 
 <ul>
-  <li
-    *ngFor="
-      let nome of nomes;
-      let indice = index;
-      let primeiro = first;
-      let ultimo = last
-    "
-  >
-    {{ indice + 1 }} - {{ nome }}
-    <span *ngIf="primeiro">Primeiro da lista</span>
-    <span *ngIf="ultimo">Último da lista</span>
-  </li>
+  @for (
+    nome of nomes;
+    track $index;
+    let indice = $index;
+    let primeiro = $first;
+    let ultimo = $last
+  ) {
+    <li>
+      {{ indice + 1 }} - {{ nome }}
+      @if (primeiro) {
+        <span>Primeiro da lista</span>
+      }
+      @if (ultimo) {
+        <span>Último da lista</span>
+      }
+    </li>
+  } @empty {
+    <li>Nenhum nome cadastrado</li>
+  }
 </ul>
-
-<p *ngIf="nomes.length === 0">Nenhum nome cadastrado</p>
 
 <button (click)="removerUltimoNome()">Remover último nome</button>
 <button (click)="limparLista()">Limpar lista</button>

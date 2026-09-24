@@ -2,22 +2,23 @@
 <p>Tarefas concluídas: {{ totalConcluidas }}</p>
 <p>Tarefas pendentes: {{ totalPendentes }}</p>
 
-<p *ngIf="tarefas.length === 0">Nenhuma tarefa cadastrada</p>
-
 <ul>
-  <li
-    *ngFor="let tarefa of tarefas"
-    [ngClass]="{
-      'prioridade-baixa': tarefa.prioridade === 'baixa',
-      'prioridade-media': tarefa.prioridade === 'média',
-      'prioridade-alta': tarefa.prioridade === 'alta',
-      concluida: tarefa.concluida
-    }"
-  >
-    <p>Tarefa: {{ tarefa.titulo }}</p>
-    <p>Responsável: {{ tarefa.responsavel }}</p>
-    <p>Prioridade: {{ tarefa.prioridade }}</p>
-    <p>Situação: {{ tarefa.concluida ? 'Concluída' : 'Pendente' }}</p>
-    <button (click)="alternarSituacao(tarefa)">Alterar situação</button>
-  </li>
+  @for (tarefa of tarefas; track tarefa.id) {
+    <li
+      [ngClass]="{
+        'prioridade-baixa': tarefa.prioridade === 'baixa',
+        'prioridade-media': tarefa.prioridade === 'média',
+        'prioridade-alta': tarefa.prioridade === 'alta',
+        concluida: tarefa.concluida,
+      }"
+    >
+      <p>Tarefa: {{ tarefa.titulo }}</p>
+      <p>Responsável: {{ tarefa.responsavel }}</p>
+      <p>Prioridade: {{ tarefa.prioridade }}</p>
+      <p>Situação: {{ tarefa.concluida ? 'Concluída' : 'Pendente' }}</p>
+      <button (click)="alternarSituacao(tarefa)">Alterar situação</button>
+    </li>
+  } @empty {
+    <li>Nenhuma tarefa cadastrada</li>
+  }
 </ul>

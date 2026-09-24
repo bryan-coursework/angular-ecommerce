@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './exercise-07-alternating-colors.scss',
   templateUrl: './exercise-07-alternating-colors.html',
 })
-export class Exercise07AlternatingColors {}
+export class Exercise07AlternatingColors {
+  disciplinas: string[] = [
+    'Matemática',
+    'Português',
+    'História',
+    'Geografia',
+    'Biologia',
+    'Programação',
+  ];
+}

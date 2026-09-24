@@ -1,1 +1,21 @@
-<p>exercise-12-product-registration works!</p>
+<label for="nome-produto">Nome do produto</label>
+<input id="nome-produto" type="text" [(ngModel)]="novoNome" />
+
+<label for="quantidade-produto">Quantidade</label>
+<input
+  id="quantidade-produto"
+  type="number"
+  min="0"
+  [(ngModel)]="novaQuantidade"
+/>
+
+<button (click)="cadastrarProduto()">Cadastrar</button>
+
+<p *ngIf="mensagemErro">{{ mensagemErro }}</p>
+
+<ul>
+  <li *ngFor="let produto of produtos">
+    {{ produto.nome }} - Quantidade: {{ produto.quantidade }}
+    <button (click)="excluirProduto(produto.id)">Excluir</button>
+  </li>
+</ul>

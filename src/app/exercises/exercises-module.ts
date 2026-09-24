@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ExercisesRoutingModule } from './exercises-routing-module';
 import { Exercise01Message } from './exercise-01-message/exercise-01-message';
@@ -36,6 +37,6 @@ import { FinalProjectPanel } from './final-project-panel/final-project-panel';
     Exercise14ModernSyntax,
     FinalProjectPanel,
   ],
-  imports: [CommonModule, ExercisesRoutingModule],
+  imports: [CommonModule, FormsModule, ExercisesRoutingModule],
 })
 export class ExercisesModule {}
